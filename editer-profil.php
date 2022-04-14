@@ -82,56 +82,6 @@ if(isset($_POST['submit']))
         //header('Location: voir-profil.php?id='.$_SESSION['id']);
     }//fin if site
 
-    
-    if(isset($_POST['newphoto'])) {
-        $nom_fichier = "profil.jpg";
-        switch($_FILES['newphoto']['type'])
-        {
-          case 'image/jpeg': $extention = 'jpg'; break;
-          case 'image/gif': $extention = 'gif'; break;
-          case 'image/png': $extention = 'png'; break;
-          case 'image/tif': $extention = 'tif'; break;
-          case 'image/png': $extention = 'png'; break;
-          default:          $extention=''; break;
-        }
-        if($extention && $_FILES['newphoto']['size']< 30 * 1024 * 1024)
-        {
-            //Changer le nom de l'image
-            $characts='abcdefghijklmnopqrstuvwxyz';
-            $characts.='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $characts.='1234567890';
-            $code_aleatoire='';
-            for($i=0;$i<20;$i++)
-            {
-                $code_aleatoire .=substr($characts,rand()%(strlen($characts)),1);
-            }
-            $nom_fichier = $code_aleatoire.".".$extention;
-            $fileName= $_FILES['newphoto']['name'];
-            $tempName = $_FILES['newphoto']['tmp_name'];
-            if(isset($fileName)){
-              if(!empty($fileName)){
-                $location = "images/profil/";
-                if(move_uploaded_file($tempName, $location.$nom_fichier))
-                  {
-                    echo 'Image Envoyé';
-                  }
-              }
-              }
-        }
-        else
-        {
-          if(!$extention) echo $_FILES['newphoto']['name']."n'est pas accepté comme fichier image";
-          else echo "L'image dépasse les 30 Mo";
-        }
-        $insertphoto = $dbh->prepare("UPDATE photoforyou.users SET photoUser = ? WHERE iduser = ?");
-        $insertphoto->execute(array($nom_fichier, $_SESSION['id']));
-        $_SESSION['photouser']=$nom_fichier;
-        var_dump($_FILES);
-        //header('Location: voir-profil.php?id='.$_SESSION['id']);
-    }//fin if site
-    
-    
-
 }//fin if $_SESSION
 ?>
 <!DOCTYPE html>
@@ -148,7 +98,7 @@ if(isset($_POST['submit']))
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
               <?php echo "<img class='rounded-circle mt-5' width='150px' src='images/profil/".($_SESSION["photouser"])."'>
                 <label class='form-label'>Photo</label>
-                <input class='form-control' type='file' onchange='actuPhoto(this)' name='newphoto' accept='image/jpeg, image/png, image/gif'>
+                <input class='form-control' type='file' id='disabledInput' name='newphoto' accept='image/jpeg, image/png, image/gif' disabled>
                 <span class='font-weight-bold'>".($_SESSION['prenom'])."\t".($_SESSION['nom'])."</span>
                 <span class='text-black-50'>".($_SESSION['email'])."</span>
                 <span> </span>";?>
