@@ -5,6 +5,26 @@ if (!isset($_SESSION['categorie']))
 {
   $_SESSION['categorie']=0;
 }
+
+//On crée un ficher logs
+//On récupère la date et l'heure
+if(isset($_SESSION['login'])){
+  $date ="[".date("d")."/".date("m")."/".date("Y")."]";
+  $heure ="[".date("H").":".date("i").":".date("s")."]";
+  $url = $_SERVER['REMOTE_ADDR']." - ".$_SESSION['prenom']." - ".$_SESSION['nom']." - ".$_SESSION['id']." connect to ". $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
+  $reunion = $date.$heure.$url."\n";
+  $files = fopen("error/logs.txt", "a+");
+  fputs($files, $reunion);
+  fclose($files);
+}else{
+  $date ="[".date("d")."/".date("m")."/".date("Y")."]";
+  $heure ="[".date("H").":".date("i").":".date("s")."]";
+  $url = $_SERVER['REMOTE_ADDR']." connect to ". $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
+  $reunion = $date.$heure.$url."\n";
+  $files = fopen("error/logs.txt", "a+");
+  fputs($files, $reunion);
+  fclose($files);
+}
 ?>
 
 <!DOCTYPE html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 15, 2022 at 09:48 AM
+-- Generation Time: Apr 19, 2022 at 02:37 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `photoforyou`
 --
-CREATE DATABASE IF NOT EXISTS `photoforyou` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `photoforyou`;
 
 DELIMITER $$
 --
@@ -195,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`iduser`, `nom`, `prenom`, `email`, `mdp`, `dateNaiss`, `credit`, `active`, `categorie`, `photoUser`, `telUser`, `adressUser`, `siteUser`, `siret`) VALUES
 (1, 'Test', 'Test', 'admin@admin.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '1988-11-01', 9999, 1, 7, 'kingcroc.jpg', '0786735357', '1 Place du Cinsault', 'test', NULL),
 (4, 'Baie', 'Michel', 'michel.baie@gmail.com', 'df6b9fb15cfdbb7527be5a8a6e39f39e572c8ddb943fbc79a943438e9d3d85ebfc2ccf9e0eccd9346026c0b6876e0e01556fe56f135582c05fbdbb505d46755a', '1988-11-29', 260, 1, 3, 'michelbaie.jpg', '0786735357', NULL, '', NULL),
-(12, 'Monrocq', 'Ugo', 'ugo.monrocq@gmail.com', '50a84d539ec7f4cd8662378b77cacc124eb75504ac35b2da608c7dcb5c8574ee614ee975cde76bbfddaf0c61b5bd038ce3b278df4c639343a71463fd71c7aa06', '2002-07-09', 1480, 1, 1, 'profil.jpg', NULL, NULL, NULL, NULL),
+(12, 'Monrocq', 'Ugo', 'ugo.monrocq@gmail.com', '50a84d539ec7f4cd8662378b77cacc124eb75504ac35b2da608c7dcb5c8574ee614ee975cde76bbfddaf0c61b5bd038ce3b278df4c639343a71463fd71c7aa06', '2002-07-09', 2480, 1, 1, 'profil.jpg', '0786735357', NULL, NULL, NULL),
 (15, 'Cauquil', 'Emmanuel', 'manucoq11@gmail.com', 'f3ce367289c96b272bb1312378f92f727b2c7bb03ffa4c621ddda4ece75706fe3e9519bc82663e777f4cce8fdfdd56df9b718210c1e62a2cbb6f4d88fe290149', '2022-04-19', 490, 1, 1, 'profil.jpg', '0786735357', NULL, 'ygusdhdsiqui.fr', NULL);
 
 --
