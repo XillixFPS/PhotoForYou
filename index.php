@@ -10,72 +10,73 @@ include ('includes/header.php');
   </div>
 
   <main>
-    <div class="container marketing">
-      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Example headline.</h1>
-              <p>Some representative placeholder content for the first slide of the carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="form-inscription.php">Inscription</a></p>
-            </div>
+    
+      <!-- Carrousel -->
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  		<div class="carousel-inner">
+    		<div class="carousel-item active">
+     			<img src="images/carrousel/carrousel1.png" class="d-block w-100" alt="...">
+    		</div>
+    		<div class="carousel-item">
+      			<img src="images/carrousel/carrousel2.png" class="d-block w-100" alt="...">
+    		</div>
+    		<div class="carousel-item">
+      			<img src="images/carrousel/carrousel3.png" class="d-block w-100" alt="...">
+    		</div>
+  		</div>
+  		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    		<span class="sr-only"></span>
+  		</a>
+  		<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    		<span class="sr-only"></span>
+  		</a>
+	</div>
+	<div class="jumbotron ">
+  		<p class="lead">Moins de temps à chercher. Plus de résultats.</p>
+			<p class="lead">Découvrez les images qui vous aideront à vous démarquer.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <div class="modal fade" id="exampleModalToggle" role="dialog" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-5 shadow">
+                  <div class="modal-header p-5 pb-4 border-bottom-0">
+                      <h2 class="fw-bold mb-0">Connexion</h2>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div><!-- fin div modal-header -->
+        
+                  <div class="modal-body p-5 pt-0 text-center">
+                    <img class="mb-4" src="assets/icon.png" alt="" width="72" height="57"><!-- Icône du site -->
+                      <form method="POST" action="connexion.php"><!-- Formulaire de connexion -->
+                        <div class="form-floating mb-3">
+                          <input type="email" class="form-control rounded-4"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" name="email" id="floatingInput" placeholder="nom@exemple.fr">
+                          <label for="floatingInput">Email</label><!-- Champs formulaire pour l'Email -->
+                        </div><!-- fin div form-floating -->
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Mot de passe" name="mdp" >
+                          <label for="floatingPassword">Mot de Passe</label><!-- Champs formualire pour le mots de passe -->
+                        </div><!-- fin div form-floating -->
+                        <div class="checkbox mb-3">
+                          <label>
+                            <input type="checkbox" value="remember-me"> Se Souvenir de moi
+                          </label>
+                        </div><!-- fin div form-floating -->
+                          <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" name="connexion" value="Valider" type="submit">Connexion</button><!-- Bouton de connexion -->
+                          <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
+                          <hr class="my-4">
+                          <h2 class="fs-5 fw-bold mb-3">Ou créez-vous un compte</h2>
+                          <a class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" href="form-inscription-client.php" role="button">Créer un Compte Client</a>
+                          <a class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" href="form-inscription-photographe.php" role="button">Créer un Compte Photographe</a>
+                      </form><!-- fin du formulaire -->
+                  </div><!-- fin div modal-body -->
+                </div><!-- fin div modal-content -->
+              </div><!-- fin div modal-dialog -->
+            </div><!-- fin div modal -->
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Inscrivez vous !</a>
           </div>
-        </div>
-        <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+	</div>
 
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Some representative placeholder content for the second slide of the carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Contact</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
 
-          <div class="container">
-            <div class="carousel-caption text-end">
-              <h1>One more for good measure.</h1>
-              <p>Some representative placeholder content for the third slide of this carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="voir-photo.php">Parcourir la galerie</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  
-  <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">La photo à la mode<span class="text-muted"></span></h2>
-        <p class="lead">Wow !! Regarder moi ça !! C'est extraordinaire, cette photo est tous simplement béni des dieux !!!</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
     
     <hr class="featurette-divider">
 
