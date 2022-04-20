@@ -1,5 +1,5 @@
-<footer class="py-5 bg-light">
-            <div class="container"><p class="m-0 text-center text-dark">Copyright &copy; PhotoForYou 2022 Ugo Monrocq</p></div>
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-light">Copyright &copy; PhotoForYou 2022 Ugo Monrocq</p></div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

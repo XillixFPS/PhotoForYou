@@ -104,7 +104,7 @@ if($_SESSION['categorie']!=7 AND $_SESSION['categorie']!=1)
             </div>
             <!-- Product actions-->
             <div class='card-footer p-4 pt-0 border-top-0 bg-transparent'>
-                <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='photo.php?idphoto=".$value['idphoto']."'>Voir plus</a></div>
+                <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='photo?idphoto=".$value['idphoto']."'>Voir plus</a></div>
             </div>
         </div>
         </div>";
@@ -145,7 +145,7 @@ if($_SESSION['categorie']!=7 AND $_SESSION['categorie']!=3)
             </div>
             <!-- Product actions-->
             <div class='card-footer p-4 pt-0 border-top-0 bg-transparent'>
-                <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='photo-acheter.php?idphoto=".$value['idphoto']."'>Voir plus</a></div>
+                <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='photo-acheter?idphoto=".$value['idphoto']."'>Voir plus</a></div>
             </div>
         </div>
         </div>";

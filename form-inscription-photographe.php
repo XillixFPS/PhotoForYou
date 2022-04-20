@@ -9,10 +9,10 @@ include('includes/header.php');
 	<title>Inscription(Photographe) - PhotoForYou</title>
 </head>
 
-<div class="container">
+<div class="container px-4 px-lg-5 mt-5">
 <!--Début Formulaire-->
  <!-- Formulaire d'inscription -->
- <form  method="post" action="inscription-photographe.php" id="form" enctype="multipart/form-data" novalidate>
+ <form  method="post" action="inscription-photographe" id="form" enctype="multipart/form-data" novalidate>
  <fieldset>
         <legend>Inscription Photographe</legend>
     <div class="form-group row">
@@ -98,10 +98,10 @@ include('includes/header.php');
           </div>
       </div>
     <br/>
-    <input type="submit" value="Confirmer"  class="btn btn-primary" name="submit"/>
-    </div> 
+    <input type="submit" value="Confirmer"  class="btn btn-primary" name="submit"/> 
     </fieldset>
   </form>
+  </div>
 <?php
 include ('includes/footer.php'); 
 ?>

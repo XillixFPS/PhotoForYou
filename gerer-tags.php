@@ -47,11 +47,11 @@ if($_SESSION['categorie']!=7)
 					<!--<a href=''><button type='button'>Editer</button></a>-->";			
 					if($value['activeTags']!=1)
 					{
-						echo "<a href='active-tags.php?idtags=".$value['idtags']."'><button type='button' class='btn btn-success'>Activer</button></a>
-						<a href='supr-tags.php?idtags=".$value['idtags']."'><button type='button' class='btn btn-danger'>Supprimer</button></a>";
+						echo "<a href='active-tags?idtags=".$value['idtags']."'><button type='button' class='btn btn-success'>Activer</button></a>
+						<a href='supr-tags?idtags=".$value['idtags']."'><button type='button' class='btn btn-danger'>Supprimer</button></a>";
 					}
 					elseif($value['activeTags']!=0){
-						echo "<a href='desac-tags.php?iduser=".$value['idtags']."'><button type='button' class='btn btn-danger'>Désactiver</button></a>
+						echo "<a href='desac-tags?iduser=".$value['idtags']."'><button type='button' class='btn btn-danger'>Désactiver</button></a>
 						</td>
 						</tr>";
 					}				
@@ -66,8 +66,8 @@ else {
 		</tbody>
 	</table>
 </div>
-<a href="ajouter-tags.php"><button type="button" class="btn btn-info">Ajouter des Tags</button></a>
-<a href="index.php"><button type="button" class="btn btn-primary">Retour</button></a>
+<a href="ajouter-tags"><button type="button" class="btn btn-info">Ajouter des Tags</button></a>
+<a href="index"><button type="button" class="btn btn-primary">Retour</button></a>
 </div>
 </div>
 <?php

@@ -57,11 +57,11 @@ if($_SESSION['categorie']!=7)
 					<!--<a href=''><button type='button'>Editer</button></a>-->";
 		if($value['active']==0)
 		{
-			echo "<a href='active-user.php?iduser=".$value['iduser']."'><button type='button' class='btn btn-success'>Activer</button></a>
-			<a href='supr-user.php?iduser=".$value['iduser']."'><button type='button' class='btn btn-danger'>Supprimer</button></a>";
+			echo "<a href='active-user?iduser=".$value['iduser']."'><button type='button' class='btn btn-success'>Activer</button></a>
+			<a href='supr-user?iduser=".$value['iduser']."'><button type='button' class='btn btn-danger'>Supprimer</button></a>";
 		}
 		elseif($value['active']==1){
-			echo "<a href='desac-user.php?iduser=".$value['iduser']."'><button type='button' class='btn btn-danger'>Désactiver</button></a>
+			echo "<a href='desac-user?iduser=".$value['iduser']."'><button type='button' class='btn btn-danger'>Désactiver</button></a>
 			</td>
 			</tr>";
 		}

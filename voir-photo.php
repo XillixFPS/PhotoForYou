@@ -42,7 +42,7 @@ else{
                             </div>
                             <!-- Product actions-->
                             <div class='card-footer p-4 pt-0 border-top-0 bg-transparent'>
-                                <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='photo.php?idphoto=".$value['idphoto']."'>Voir plus</a></div>
+                                <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='photo?idphoto=".$value['idphoto']."'>Voir plus</a></div>
                             </div>
                         </div>
                     </div>";
@@ -58,7 +58,7 @@ else{
        $tags = $dbh -> query('SELECT * FROM tags WHERE activeTags=1 ORDER BY idtags DESC');
        foreach ($tags as $value)
        echo"
-       <a style='color:#000000; text-decoration: none; text-align: center;' href='voir-photo.php?idtags=".$value['idtags']."'>
+       <a style='color:#000000; text-decoration: none; text-align: center;' href='voir-photo?idtags=".$value['idtags']."'>
        <div class='col'>
          <div class='card shadow-sm'>
            <div class='card-body'>

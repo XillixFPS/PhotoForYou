@@ -8,7 +8,7 @@ include ('includes/header.php');
       <h1 class="display-5">PhotoForYou</h1>
         <p class="lead">Des pros au service des professionnels de la communication.</p>
   </div>
-
+  
   <main>
     
       <!-- Carrousel -->
@@ -47,7 +47,7 @@ include ('includes/header.php');
         
                   <div class="modal-body p-5 pt-0 text-center">
                     <img class="mb-4" src="assets/icon.png" alt="" width="72" height="57"><!-- Icône du site -->
-                      <form method="POST" action="connexion.php"><!-- Formulaire de connexion -->
+                      <form method="POST" action="connexion"><!-- Formulaire de connexion -->
                         <div class="form-floating mb-3">
                           <input type="email" class="form-control rounded-4"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" name="email" id="floatingInput" placeholder="nom@exemple.fr">
                           <label for="floatingInput">Email</label><!-- Champs formulaire pour l'Email -->
@@ -65,8 +65,8 @@ include ('includes/header.php');
                           <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
                           <hr class="my-4">
                           <h2 class="fs-5 fw-bold mb-3">Ou créez-vous un compte</h2>
-                          <a class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" href="form-inscription-client.php" role="button">Créer un Compte Client</a>
-                          <a class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" href="form-inscription-photographe.php" role="button">Créer un Compte Photographe</a>
+                          <a class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" href="form-inscription-client" role="button">Créer un Compte Client</a>
+                          <a class="w-100 py-2 mb-2 btn btn-outline-dark rounded-4" href="form-inscription-photographe" role="button">Créer un Compte Photographe</a>
                       </form><!-- fin du formulaire -->
                   </div><!-- fin div modal-body -->
                 </div><!-- fin div modal-content -->
@@ -80,7 +80,6 @@ include ('includes/header.php');
     
     <hr class="featurette-divider">
 
-    <!-- /END THE FEATURETTES -->
 
     </div><!-- /.container -->
   </main>

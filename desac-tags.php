@@ -13,7 +13,7 @@ if($_GET['idtags']) {
 
 if($_SESSION['categorie']!=7)
 {
-    header('Location: page-erreur.php');
+    header('Location: page-erreur');
 }
 
 ?>
@@ -30,7 +30,7 @@ if($_SESSION['categorie']!=7)
 
 	<input type="hidden" name="idtags" value="<?php echo $data['idtags'] ?>" />
 	<button type="submit">Sauvegarder les changements</button>
-	<a href="gerer_tags.php"><button type="button">Retour</button></a>
+	<a href="gerer_tags"><button type="button">Retour</button></a>
 </form>
 
 </body>
@@ -48,7 +48,7 @@ if($_POST) {
 	try
     {
         $sql->execute();
-        header('Location: gerer-tags.php');
+        header('Location: gerer-tags');
     }
     catch(PDOException $e)
     {

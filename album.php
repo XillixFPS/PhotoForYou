@@ -28,7 +28,7 @@ $tags = $dbh -> query('SELECT * FROM tags WHERE activeTags=1 ORDER BY idtags DES
 
       <!-- On affiche les catégories, il y a une en brut (Toutes les photos) et les autres seront affichés grâce au PHP et une requête SQL -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <a style='color:#000000; text-decoration: none; text-align: center;' href='voir-photo.php'>
+      <a style='color:#000000; text-decoration: none; text-align: center;' href='voir-photo'>
         <div class='col'>
             <div class='card shadow-sm'>
               <div class='card-body'>
@@ -40,7 +40,7 @@ $tags = $dbh -> query('SELECT * FROM tags WHERE activeTags=1 ORDER BY idtags DES
       <?php
         foreach ($tags as $value)
         echo"
-        <a style='color:#000000; text-decoration: none; text-align: center;' href='voir-photo.php?idtags=".$value['idtags']."'>
+        <a style='color:#000000; text-decoration: none; text-align: center;' href='voir-photo?idtags=".$value['idtags']."'>
         <div class='col'>
           <div class='card shadow-sm'>
             <div class='card-body'>

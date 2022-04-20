@@ -8,7 +8,7 @@ include ("includes/dbconnect.php");
 //Si on est client ou visteur, on est redirigé vers la page d'erreur
 if($_SESSION['categorie']<2)
 {
-    header('Location: page-erreur.php');
+    header('Location: page-erreur');
 }
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ if($_SESSION['categorie']<2)
               <label for="prenom">Libellé du Tags</label>
                 <input type="text" class="form-control" pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]+" minlength="3" maxlength="30" name="tag" id="tag" placeholder="Libellé du tag" required>
                 <br><input type="submit" value="Confirmer" class="btn btn-info" name="submit" />
-                <a href="gerer-tags.php"><input type="button" value="Retour" class="btn btn-primary"/></a>    
+                <a href="gerer-tags"><input type="button" value="Retour" class="btn btn-primary"/></a>    
             </div>
           </div>
       </fieldset><!-- fin fieldset -->

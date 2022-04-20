@@ -81,7 +81,7 @@ if (isset($_POST['submit']))
     try
     {
         $sql->execute();
-        header('Location:inscription-reussie.php');
+        header('Location:inscription-reussie');
     }
     catch(PDOException $e)
     {
@@ -90,12 +90,12 @@ if (isset($_POST['submit']))
     }
     else
     {
-      header("Location:inscription.php");
+      header("Location:formulaire-inscription-client");
     }
 }
     else
     {
-      header("Location:inscription.php");
+      header("Location:formulaire-inscription-client");
     }
     
 ?>

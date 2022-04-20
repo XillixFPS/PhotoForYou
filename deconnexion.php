@@ -1,7 +1,7 @@
 <?php
 include("includes/header.php");
 session_destroy();
-header('Location: index.php');
+header('Location: index');
 // Libération de la mémoire
 $result->close();
 $conn->close();

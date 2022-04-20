@@ -11,7 +11,7 @@ if($_GET['iduser']) {
 
 if($_SESSION['categorie']!=7)
 {
-    header('Location: page-erreur.php');
+    header('Location: page-erreur');
 }
 
 ?>
@@ -29,7 +29,7 @@ if($_SESSION['categorie']!=7)
 	<input type="hidden" name="iduser" value="<?php echo $data['iduser'] ?>" />
     <input type="hidden" name="active" value="<?php echo $data['active'] ?>" />
 	<button type="submit">Sauvegarder les changements</button>
-	<a href="gerer-utilisateur.php"><button type="button">Retour</button></a>
+	<a href="gerer-utilisateur"><button type="button">Retour</button></a>
 </form>
 </body>
 
@@ -45,7 +45,7 @@ if($_POST) {
     try
     {
         $sql->execute();
-        header('Location: gerer-utilisateur.php');
+        header('Location: gerer-utilisateur');
     }
     catch(PDOException $e)
     {

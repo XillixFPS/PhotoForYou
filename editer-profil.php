@@ -8,7 +8,7 @@ include("includes/dbconnect.php");
 if($_SESSION['login']!=true)
 {
     //On redirige le visiteur sur la page de connexion
-    header('Location: connexion.php');
+    header('Location: connexion');
 }//fin if
 
 //On va attribuer des valeurs aux nombres qui correspond aux catégories pour l'affichage
@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
         //On change le prenom dans la $_SESSION
         $_SESSION['prenom']=$newprenom;
         //On redirige l'utilisateur va la page de son profil
-        //header('Location: voir-profil.php?id='.$_SESSION['id']);
+        header('Location: voir-profil?id='.$_SESSION['id']);
     }//fin if prenom
 
     if(isset($_POST['newnom']) AND !empty($_POST['newnom']) AND $_POST['newnom'] != $user['nom']) {
@@ -47,7 +47,7 @@ if(isset($_POST['submit']))
         $insertnom = $dbh->prepare("UPDATE photoforyou.users SET nom = ? WHERE iduser = ?");
         $insertnom->execute(array($newnom, $_SESSION['id']));
         $_SESSION['nom']=$newnom;
-        //header('Location: voir-profil.php?id='.$_SESSION['id']);
+        header('Location: voir-profil?id='.$_SESSION['id']);
     }//fin if nom
 
     if(isset($_POST['newtel']) AND !empty($_POST['newtel']) AND $_POST['newtel'] != $user['telUser']) {
@@ -55,7 +55,7 @@ if(isset($_POST['submit']))
         $inserttel = $dbh->prepare("UPDATE photoforyou.users SET telUser = ? WHERE iduser = ?");
         $inserttel->execute(array($newtel, $_SESSION['id']));
         $_SESSION['tel']=$newtel;
-        //header('Location: voir-profil.php?id='.$_SESSION['id']);
+        header('Location: voir-profil?id='.$_SESSION['id']);
     }//fin if numéro de téléphone
 
     if(isset($_POST['newdate']) AND !empty($_POST['newdate']) AND $_POST['newdate'] != $user['dateNaiss']) {
@@ -63,7 +63,7 @@ if(isset($_POST['submit']))
         $insertdate = $dbh->prepare("UPDATE photoforyou.users SET dateNaiss = ? WHERE iduser = ?");
         $insertdate->execute(array($newdate, $_SESSION['id']));
         $_SESSION['date']=$newdate;
-        //header('Location: voir-profil.php?id='.$_SESSION['id']);
+        header('Location: voir-profil?id='.$_SESSION['id']);
     }//fin if date de naissance
 
     if(isset($_POST['newadresse']) AND !empty($_POST['newadresse']) AND $_POST['newadresse'] != $user['adresse']) {
@@ -71,7 +71,7 @@ if(isset($_POST['submit']))
         $insertadresse = $dbh->prepare("UPDATE photoforyou.users SET adressUser = ? WHERE iduser = ?");
         $insertadresse->execute(array($newadresse, $_SESSION['id']));
         $_SESSION['adresse']=$newadresse;
-       //header('Location: voir-profil.php?id='.$_SESSION['id']);
+       header('Location: voir-profil?id='.$_SESSION['id']);
     }//fin if adresse
 
     if(isset($_POST['newsite']) AND !empty($_POST['newsite']) AND $_POST['newsite'] != $user['site']) {
@@ -79,7 +79,7 @@ if(isset($_POST['submit']))
         $insertsite = $dbh->prepare("UPDATE photoforyou.users SET siteUser = ? WHERE iduser = ?");
         $insertsite->execute(array($newsite, $_SESSION['id']));
         $_SESSION['site']=$newsite;
-        //header('Location: voir-profil.php?id='.$_SESSION['id']);
+        header('Location: voir-profil?id='.$_SESSION['id']);
     }//fin if site
 
 }//fin if $_SESSION
