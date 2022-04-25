@@ -6,7 +6,7 @@ if (isset($_POST['submit']))
   // Traitement de la photo
   if($_FILES)
   {
-    $nom_fichier = "profil.jpg";
+    $nomfichier = "profil.jpg";
     switch($_FILES['photoUser']['type'])
     {
       case 'image/jpeg': $extention = 'jpg'; break;
@@ -27,17 +27,13 @@ if (isset($_POST['submit']))
         {
             $code_aleatoire .=substr($characts,rand()%(strlen($characts)),1);
         }
-        $nom_fichier = $code_aleatoire.".".$extention;
+        $nomfichier = $code_aleatoire.".".$extention;
         $fileName= $_FILES['photoUser']['name'];
         $tempName = $_FILES['photoUser']['tmp_name'];
         if(isset($fileName)){
           if(!empty($fileName)){
             $location = "images/profil/";
-            if(move_uploaded_file($tempName, $location.$nom_fichier))
-              {
-                echo 'Image Envoyé';
-              }
-          }
+            move_uploaded_file($tempName, $location.$nomfichier);
           }
     }
     else
@@ -89,7 +85,7 @@ if (isset($_POST['submit']))
     $sql->bindParam(':email', $email, PDO::PARAM_STR);
     $sql->bindParam(':mdp', $mdp, PDO::PARAM_STR);
     $sql->bindParam(':date', $date, PDO::PARAM_STR);
-    $sql->bindParam(':photouser', $nom_fichier, PDO::PARAM_STR);
+    $sql->bindParam(':photouser', $nomfichier, PDO::PARAM_STR);
     $sql->bindParam(':site', $site, PDO::PARAM_STR);
     $sql->bindParam(':siret', $siret, PDO::PARAM_STR);
     try
@@ -111,5 +107,5 @@ if (isset($_POST['submit']))
     {
       header("Location:formulaire-inscription-photographe");
     }
-
+  }
 ?>

@@ -33,7 +33,7 @@ if (isset($_POST['submit']))
         if(isset($fileName)){
           if(!empty($fileName)){
             $location = "images/profil/";
-            move_uploaded_file($tempName, $location.$nom_fichier);
+            move_uploaded_file($tempName, $location.$nomfichier);
           }
     }
     else
