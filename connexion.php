@@ -47,7 +47,7 @@ if (isset($_POST['connexion']))
 				}
 			}
       unset($result);
-      echo '<script>location.href=".";</script>';
+      echo '<script>location.href="connexion-reussie";</script>';
   }
   else
   {

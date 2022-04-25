@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 19, 2022 at 02:37 PM
+-- Generation Time: Apr 25, 2022 at 03:40 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -25,13 +25,6 @@ DELIMITER $$
 --
 -- Functions
 --
-DROP FUNCTION IF EXISTS `client_sans_credit`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `client_sans_credit` () RETURNS INT(11) BEGIN
-DECLARE credit int;
-SELECT DISTINCT count(*) INTO credit FROM users WHERE credit = 0 AND categorie = 1;
-RETURN credit;
-END$$
-
 DROP FUNCTION IF EXISTS `InitCap`$$
 CREATE DEFINER=`root`@`localhost` FUNCTION `InitCap` (`a` VARCHAR(45)) RETURNS VARCHAR(45) CHARSET utf8 BEGIN
 
@@ -61,15 +54,59 @@ CREATE TABLE IF NOT EXISTS `acheter` (
   PRIMARY KEY (`idacheter`,`idphoto`,`iduser`),
   UNIQUE KEY `idphoto_UNIQUE` (`idphoto`),
   KEY `iduser` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `acheter`
 --
 
 INSERT INTO `acheter` (`idphoto`, `idacheter`, `iduser`) VALUES
+(4, 20, 12),
 (11, 17, 12),
+(12, 19, 12),
 (13, 18, 15);
+
+--
+-- Triggers `acheter`
+--
+DROP TRIGGER IF EXISTS `acheter_AFTER_INSERT`;
+DELIMITER $$
+CREATE TRIGGER `acheter_AFTER_INSERT` AFTER INSERT ON `acheter` FOR EACH ROW BEGIN
+INSERT INTO logs(libelle, date) VALUES("Nouvelle Achat de Photo",NOW()); 
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE IF NOT EXISTS `logs` (
+  `idlogs` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(45) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`idlogs`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`idlogs`, `libelle`, `date`) VALUES
+(1, 'Création d\'un utilisateur', '2022-04-25 11:29:08'),
+(2, 'Création d\'un utilisateur', '2022-04-25 11:30:12'),
+(3, 'Création d\'un utilisateur', '2022-04-25 11:30:30'),
+(4, 'Création d\'un utilisateur', '2022-04-25 11:33:24'),
+(5, 'Désactivation/Activation d\'un tags', '2022-04-25 15:37:30'),
+(6, 'Désactivation/Activation d\'un tags', '2022-04-25 15:37:32'),
+(7, 'Désactivation/Activation d\'un tags', '2022-04-25 15:37:41'),
+(8, 'Désactivation/Activation d\'un tags', '2022-04-25 15:37:54'),
+(9, 'Création d\'un utilisateur', '2022-04-25 17:28:17'),
+(10, 'Désactivation/Activation d\'un tags', '2022-04-25 17:33:47'),
+(11, 'Désactivation/Activation d\'un tags', '2022-04-25 17:34:07');
 
 -- --------------------------------------------------------
 
@@ -94,11 +131,11 @@ INSERT INTO `menu` (`idMenu`, `nomMenu`, `URL`, `Habilitation`) VALUES
 (1, 'Espace Photographe', NULL, 'P'),
 (2, 'Album', '', 'CPAV'),
 (3, 'Admin', NULL, 'A'),
-(11, 'Vendre photo', 'vendre-photo.php', 'P'),
-(12, 'Créer un tags', 'ajouter-tags.php', 'P'),
-(21, 'Voir Album', 'album.php', 'CPAV'),
-(31, 'Gérer Utilisateurs', 'gerer-utilisateur.php', 'A'),
-(33, 'Gérer Tags', 'gerer-tags.php', 'A');
+(11, 'Vendre photo', 'vendre-photo', 'P'),
+(12, 'Créer un tags', 'ajouter-tags', 'P'),
+(21, 'Voir Album', 'album', 'CPAV'),
+(31, 'Gérer Utilisateurs', 'gerer-utilisateur', 'A'),
+(33, 'Gérer Tags', 'gerer-tags', 'A');
 
 -- --------------------------------------------------------
 
@@ -136,6 +173,17 @@ INSERT INTO `photo` (`idphoto`, `libelle`, `photolargeur`, `photolongueur`, `nom
 (12, 'test', NULL, NULL, '4q0mgDd2BJ91w5VAzJ5m.jpg', '900', '2022-03-22 13:09:00', 72514, 4, 3),
 (13, 'test', NULL, NULL, 'KeH0IpQQ7NqwFm1OoNPC.jpg', '10', '2022-04-04 14:39:48', 31043, 4, 2);
 
+--
+-- Triggers `photo`
+--
+DROP TRIGGER IF EXISTS `photo_AFTER_INSERT`;
+DELIMITER $$
+CREATE TRIGGER `photo_AFTER_INSERT` AFTER INSERT ON `photo` FOR EACH ROW BEGIN
+INSERT INTO logs(libelle, date) VALUES("Ajout d'une photo",NOW()); 
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -161,6 +209,24 @@ INSERT INTO `tags` (`idtags`, `libelleTags`, `activeTags`, `iduserTags`) VALUES
 (2, 'Portrait', 1, 1),
 (3, 'Animaux', 1, 1);
 
+--
+-- Triggers `tags`
+--
+DROP TRIGGER IF EXISTS `tags_AFTER_INSERT`;
+DELIMITER $$
+CREATE TRIGGER `tags_AFTER_INSERT` AFTER INSERT ON `tags` FOR EACH ROW BEGIN
+INSERT INTO logs(libelle, date) VALUES("Création d'un tags",NOW()); 
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `tags_AFTER_UPDATE`;
+DELIMITER $$
+CREATE TRIGGER `tags_AFTER_UPDATE` AFTER UPDATE ON `tags` FOR EACH ROW BEGIN
+INSERT INTO logs(libelle, date) VALUES("Désactivation/Activation d'un tags",NOW()); 
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -184,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `siteUser` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
   `siret` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -192,9 +258,28 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`iduser`, `nom`, `prenom`, `email`, `mdp`, `dateNaiss`, `credit`, `active`, `categorie`, `photoUser`, `telUser`, `adressUser`, `siteUser`, `siret`) VALUES
 (1, 'Test', 'Test', 'admin@admin.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '1988-11-01', 9999, 1, 7, 'kingcroc.jpg', '0786735357', '1 Place du Cinsault', 'test', NULL),
-(4, 'Baie', 'Michel', 'michel.baie@gmail.com', 'df6b9fb15cfdbb7527be5a8a6e39f39e572c8ddb943fbc79a943438e9d3d85ebfc2ccf9e0eccd9346026c0b6876e0e01556fe56f135582c05fbdbb505d46755a', '1988-11-29', 260, 1, 3, 'michelbaie.jpg', '0786735357', NULL, '', NULL),
-(12, 'Monrocq', 'Ugo', 'ugo.monrocq@gmail.com', '50a84d539ec7f4cd8662378b77cacc124eb75504ac35b2da608c7dcb5c8574ee614ee975cde76bbfddaf0c61b5bd038ce3b278df4c639343a71463fd71c7aa06', '2002-07-09', 2480, 1, 1, 'profil.jpg', '0786735357', NULL, NULL, NULL),
-(15, 'Cauquil', 'Emmanuel', 'manucoq11@gmail.com', 'f3ce367289c96b272bb1312378f92f727b2c7bb03ffa4c621ddda4ece75706fe3e9519bc82663e777f4cce8fdfdd56df9b718210c1e62a2cbb6f4d88fe290149', '2022-04-19', 490, 1, 1, 'profil.jpg', '0786735357', NULL, 'ygusdhdsiqui.fr', NULL);
+(4, 'Baie', 'Michel', 'michel.baie@gmail.com', 'df6b9fb15cfdbb7527be5a8a6e39f39e572c8ddb943fbc79a943438e9d3d85ebfc2ccf9e0eccd9346026c0b6876e0e01556fe56f135582c05fbdbb505d46755a', '1988-11-29', 1410, 1, 3, 'michelbaie.jpg', '0786735357', NULL, '', NULL),
+(12, 'Monrocq', 'Ugo', 'ugo.monrocq@gmail.com', '50a84d539ec7f4cd8662378b77cacc124eb75504ac35b2da608c7dcb5c8574ee614ee975cde76bbfddaf0c61b5bd038ce3b278df4c639343a71463fd71c7aa06', '2002-07-09', 1330, 1, 1, 'profil.jpg', '0786735357', NULL, NULL, NULL),
+(15, 'Cauquil', 'Emmanuel', 'manucoq11@gmail.com', 'f3ce367289c96b272bb1312378f92f727b2c7bb03ffa4c621ddda4ece75706fe3e9519bc82663e777f4cce8fdfdd56df9b718210c1e62a2cbb6f4d88fe290149', '2022-04-19', 490, 0, 1, 'profil.jpg', '0786735357', NULL, 'ygusdhdsiqui.fr', NULL),
+(16, 'Kanté', 'Ngolo', 'ngolokante@gmail.com', '852710be70d266a7fe5b935cd275451e0804d905c0a6b16a21b0faaf2ee33d69b53d70532b25691116a81fde838247b305f7454afca11aec13224399063fca28', '1988-01-31', 0, 1, 1, 'roPTsV8RkQO4R9VMrnr1.png', NULL, NULL, NULL, NULL);
+
+--
+-- Triggers `users`
+--
+DROP TRIGGER IF EXISTS `users_AFTER_INSERT`;
+DELIMITER $$
+CREATE TRIGGER `users_AFTER_INSERT` AFTER INSERT ON `users` FOR EACH ROW BEGIN
+	INSERT INTO logs(libelle, date) VALUES("Création d'un utilisateur",NOW()); 
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `users_AFTER_UPDATE`;
+DELIMITER $$
+CREATE TRIGGER `users_AFTER_UPDATE` AFTER UPDATE ON `users` FOR EACH ROW BEGIN
+INSERT INTO logs(libelle, date) VALUES("Mise à jour d'un utilisateur",NOW()); 
+END
+$$
+DELIMITER ;
 
 --
 -- Constraints for dumped tables

@@ -41,7 +41,7 @@ $tags = $dbh -> query('SELECT * FROM tags')
     <br>
     <div class="col-auto my-1">
       <label class="mr-sm-2" for="inlineFormCustomSelect">Choisir Tags de la Photo</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="tags">
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="tags" required>
         <option selected></option>
         <?php
         foreach ($tags as $value)

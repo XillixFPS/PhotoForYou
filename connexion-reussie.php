@@ -18,6 +18,7 @@ if($_SESSION['login']!=true)
       		<?php echo '<p class="lead">Bonjour '.htmlentities($_SESSION['prenom']).' '.htmlentities($_SESSION['nom']).' comment allez vous ?</p>'?>
       		<hr class="my-4">
     </div>
+	</div>
 </body>
 </html>
 <?php
