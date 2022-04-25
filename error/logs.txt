@@ -462,3 +462,9 @@
 [25/04/2022][10:13:58]::1 - Test - Test - 1 connect to btssio2/PhotoForYou/credit.php
 [25/04/2022][10:13:59]::1 - Test - Test - 1 connect to btssio2/PhotoForYou/voir-profil.php
 [25/04/2022][10:14:01]::1 - Test - Test - 1 connect to btssio2/PhotoForYou/index.php
+[25/04/2022][10:31:15]::1 - Test - Test - 1 connect to btssio2/PhotoForYou/index.php
+[25/04/2022][10:31:16]::1 - Test - Test - 1 connect to btssio2/PhotoForYou/album.php
+[25/04/2022][10:31:19]::1 - Test - Test - 1 connect to btssio2/PhotoForYou/deconnexion.php
+[25/04/2022][10:31:20]::1 connect to btssio2/PhotoForYou/index.php
+[25/04/2022][10:31:23]::1 connect to btssio2/PhotoForYou/connexion.php
+[25/04/2022][10:31:23]::1 - Michel - Baie - 4 connect to btssio2/PhotoForYou/index.php
