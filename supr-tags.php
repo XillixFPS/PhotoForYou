@@ -45,7 +45,7 @@ if($_POST) {
     try
     {
         $sql->execute();
-        header('Location: gerer-tags');
+        echo'<script>location.href="gerer-tags";</script>';
     }
     catch(PDOException $e)
     {

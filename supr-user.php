@@ -45,7 +45,7 @@ if($_POST) {
     try
     {
         $sql->execute();
-        header('Location: gerer-utilisateur');
+        echo'<script>location.href="gerer-utilisateur";</script>';
     }
     catch(PDOException $e)
     {

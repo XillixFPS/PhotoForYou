@@ -1,7 +1,7 @@
 <?php
 $host="localhost";
-$username="web";
-$password="12345web";
+$username="root";
+$password="";
 $dbname="photoforyou";
 $dsn="mysql:host=$host;dbname=$dbname;charset=UTF8";
 

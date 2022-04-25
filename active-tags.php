@@ -1,8 +1,16 @@
-<!-- Page qui permet de désactiver un utilisateur (Admin) -->
+<!-- Cette page permet d'activer les tags qui sont désactiver par un admin -->
 
 <?php 
 include("includes/header.php");
 
+//Il n'y a que les utilisateurs de types admin qui peuvent entrer sur la page
+//L'autre son rediriger sur la page d'erreur
+if($_SESSION['categorie']!=7)
+{
+    header('Location: page_erreur.php');
+}
+
+//On récupére l'id du tags qu'on veut activer
 if($_GET['idtags']) {
 	$id = $_GET['idtags'];
 
@@ -10,22 +18,16 @@ if($_GET['idtags']) {
     $req = $dbh->query($sql);
     $data = $result = $req->fetch();
 }
-
-if($_SESSION['categorie']!=7)
-{
-    header('Location: page-erreur');
-}
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Désactiver un tags(Admin) - PhotoForYou</title>
+	<title>Activer un tags(Admin) - PhotoForYou</title>
 </head>
 <body>
 
-<h3>Voulez vous désactivez un tags ?</h3>
+<h3>Voulez vous activer ce tag ?</h3>
 <form action="" method="post">
 
 	<input type="hidden" name="idtags" value="<?php echo $data['idtags'] ?>" />
@@ -33,7 +35,6 @@ if($_SESSION['categorie']!=7)
 </form>
 
 </body>
-
 </html>
 <?php
 include ('includes/footer.php'); 
@@ -41,9 +42,8 @@ include ('includes/footer.php');
 <?php
 if($_POST) {
 	$id = $_POST['idtags'];
-    
-    //Update le champs active à 0
-	$sql = $dbh->prepare("UPDATE tags SET activeTags = 0 WHERE idtags = {$id}");
+    //Requête sql pour update l'activation d'un compte
+	$sql = $dbh->prepare("UPDATE tags SET activeTags = 1 WHERE idtags = {$id}");
 	try
     {
         $sql->execute();
@@ -54,5 +54,4 @@ if($_POST) {
         echo"<br> Erreur:". $e->getMessage();
     }
 }
-include ('includes/footer.php'); 
 ?>

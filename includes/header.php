@@ -155,7 +155,7 @@ if(isset($_SESSION['login'])){
             //Pour le client, On affiche l'onglet crédit et sa photo de profil où il peut aller consulter son profil
             echo "
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
-              <a class='btn btn-outline-warning' href='credit.php' type='submit'>
+              <a class='btn btn-outline-warning' href='credit' type='submit'>
                 <i class='bi bi-coin'></i>
                 Credit
                 <span class='badge bg-warning text-dark ms-1 rounded-pill'>".$_SESSION['credit']."</span>
@@ -203,7 +203,7 @@ if(isset($_SESSION['login'])){
               //Pour l'admin, On affiche l'onglet crédit et sa photo de profil où il peut aller consulter son profil
               echo "
               <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
-                <a class='btn btn-outline-warning' href='credit.php' type='submit'>
+                <a class='btn btn-outline-warning' href='credit' type='submit'>
                   <i class='bi bi-coin'></i>
                   Credit
                 <span class='badge bg-warning text-dark ms-1 rounded-pill'>".$_SESSION['credit']."</span>

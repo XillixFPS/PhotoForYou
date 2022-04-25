@@ -32,7 +32,6 @@ if($_GET['iduser']) {
 
 	<input type="hidden" name="iduser" value="<?php echo $data['iduser'] ?>" />
 	<button type="submit">Sauvegarder les changements</button>
-	<a href="gerer-utilisateur"><button type="button">Retour</button></a>
 </form>
 
 </body>
@@ -48,7 +47,7 @@ if($_POST) {
 	try
     {
         $sql->execute();
-        header('Location: gerer-utilisateur.php');
+        echo'<script>location.href="gerer-utilisateur";</script>';
     }
     catch(PDOException $e)
     {

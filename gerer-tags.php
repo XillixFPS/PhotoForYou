@@ -51,7 +51,7 @@ if($_SESSION['categorie']!=7)
 						<a href='supr-tags?idtags=".$value['idtags']."'><button type='button' class='btn btn-danger'>Supprimer</button></a>";
 					}
 					elseif($value['activeTags']!=0){
-						echo "<a href='desac-tags?iduser=".$value['idtags']."'><button type='button' class='btn btn-danger'>Désactiver</button></a>
+						echo "<a href='desac-tags?idtags=".$value['idtags']."'><button type='button' class='btn btn-danger'>Désactiver</button></a>
 						</td>
 						</tr>";
 					}				
