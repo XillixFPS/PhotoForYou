@@ -66,8 +66,6 @@ $nbr=$nombrephoto->fetch();
         </div>
     </div>
 </div>
-</div>
-</div>
 
 <?php
 if($_SESSION['categorie']!=7 AND $_SESSION['categorie']!=1)
