@@ -4,16 +4,3 @@ ErrorDocument 404 http://photoforyou/error/404.html
 ErrorDocument 406 http://photoforyou/error/406.html
 ErrorDocument 500 http://photoforyou/error/500.html
 ErrorDocument 503 http://photoforyou/error/503.html
-
-RewriteEngine On
-
-# Unless directory, remove trailing slash
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)/$ http://photoforyou/$1 [R=301,L]
-
-# Redirect external .php requests to extensionless URL
-RewriteCond %{THE_REQUEST} ^(.+)\.php([#?][^\ ]*)?\ HTTP/
-RewriteRule ^(.+)\.php$ http://photoforyou/$1 [R=301,L]
-
-# Resolve .php file for extensionless PHP URLs
-RewriteRule ^([^/.]+)$ $1.php [L
